@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"net"
 	"time"
@@ -34,7 +33,7 @@ func handleConnIncoming(connIn net.Conn) {
 	processIncomingRequest(connIn, connOut)
 }
 
-//Handle request from incoming connection.
+// Handle request from incoming connection.
 func processIncomingRequest(connIn net.Conn, connOut net.Conn) {
 	var currentSession *session.Session
 	connInBr := bufio.NewReader(connIn)
@@ -84,7 +83,7 @@ func processIncomingRequest(connIn net.Conn, connOut net.Conn) {
 		// 5 Forward request
 		if connOut == nil {
 			// Open connection if first request
-			connOut, err = net.Dial("tcp", fmt.Sprintf("127.0.0.1:%d", proxyConfig.PortOutLocal))
+			connOut, err = net.Dial("tcp", proxyConfig.ForwardIncommingAddress)
 			if err != nil {
 				return
 			}
@@ -101,7 +100,7 @@ func processIncomingRequest(connIn net.Conn, connOut net.Conn) {
 	}
 }
 
-//Handle response from outgoing connection.
+// Handle response from outgoing connection.
 func processIncomingResponse(connIn net.Conn, connOut net.Conn) error {
 	connInBr := bufio.NewReader(connIn)
 	// 1 Read headers

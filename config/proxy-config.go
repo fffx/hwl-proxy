@@ -2,22 +2,22 @@ package config
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"os"
 	"time"
 )
 
 type ProxyConfig struct {
-	IncomingAddress string        // incoming connection from the internet
-	PortOutLocal    int           // outgoing connection to local intermediary or origin server
-	PortInLocal     int           // incoming connection from local intermediary
-	OutgoingAddress string        // outgoing connection to next intermediary
-	Whitelisting    bool          // apply whitelisting
-	ConnTimeout     time.Duration // connection read and write timeout
-	Origin          bool          // true, if target is origin server, false if target is intermediary with two endpoints
+	IncomingAddress         string        // incoming connection from the internet
+	ForwardIncommingAddress string        // outgoing connection to local intermediary or origin server
+	PortInLocal             int           // incoming connection from local intermediary
+	OutgoingAddress         string        // outgoing connection to next intermediary
+	Whitelisting            bool          // apply whitelisting
+	ConnTimeout             time.Duration // connection read and write timeout
+	Origin                  bool          // true, if target is origin server, false if target is intermediary with two endpoints
 }
 
 func (proxyConfig *ProxyConfig) Load(file string) error {
-	data, err := ioutil.ReadFile(file)
+	data, err := os.ReadFile(file)
 	if err != nil {
 		return err
 	}

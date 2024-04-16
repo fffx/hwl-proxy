@@ -1,7 +1,7 @@
 # HWL Proxy
 
 ## Description
-This repository contains the proof-of-concept implementation of a Header Whitelisting (HWL) Proxy. It can be deployed on HTTP intermediaries or web servers to sanitize HTTP requests from unknown or invalid header fields. 
+This repository contains the proof-of-concept implementation of a Header Whitelisting (HWL) Proxy. It can be deployed on HTTP intermediaries or web servers to sanitize HTTP requests from unknown or invalid header fields.
 
 **Please note:** This application does not support HTTPS and is only meant for research and testing purposes.
 
@@ -13,7 +13,7 @@ This repository contains the proof-of-concept implementation of a Header Whiteli
 go get github.com/Digital-Security-Lab/hwl-proxy
 ```
 
-## Build 
+## Build
 ```
 go build -o hwl-proxy
 ```
@@ -23,7 +23,7 @@ go build -o hwl-proxy
 go test ./...
 ```
 
-## Run 
+## Run
 ```
 ./hwl-proxy
 ```
@@ -38,13 +38,13 @@ go test ./...
 
 ## Proxy configuration
 
-The proxy configuration must be defined in a JSON file (default: config.json). 
+The proxy configuration must be defined in a JSON file (default: config.json).
 
 If deployed on an intermediary, the file may look as follows:
 ```json
 {
     "incomingAddress": "<host-address>:80",
-    "portOutLocal": 81,
+    "ForwardIncommingAddress": "<host-address>:81",
     "portInLocal": 80,
     "outgoingAddress": "<host-address>:80",
     "whitelisting": true,
@@ -56,7 +56,7 @@ If deployed on an web server, the file may look as follows:
 ```json
 {
     "incomingAddress": "<host-address>:80",
-    "portOutLocal": 81,
+    "ForwardIncommingAddress": "<host-address>:3000",
     "whitelisting": true,
     "origin": true,
     "connTimeout": 30

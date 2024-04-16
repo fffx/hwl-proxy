@@ -2,7 +2,7 @@
     "incomingAddress": "139.6.102.53:80",
     "outgoingAddress": "127.0.0.1:9000",
     "portInLocal": 80,
-    "portOutLocal": 81,
+    "ForwardIncommingAddress": "127.0.0.1:81",
     "tunnelMode": true,
     "connTimeout": 30
 }
