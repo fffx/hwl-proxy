@@ -2,10 +2,10 @@ package main
 
 import (
 	"flag"
+	"hwl-proxy/config"
 	"log"
 	"os"
 
-	"github.com/digital-security-lab/hwl-proxy/config"
 	"github.com/digital-security-lab/hwl-proxy/whitelisting"
 )
 
