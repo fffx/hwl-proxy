@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"bytes"
-	"fmt"
 	"log"
 	"net"
 	"strconv"
@@ -16,8 +15,8 @@ import (
 
 func outgoingServer() {
 	// listen for incoming connections from intermediary
-	server, err := net.Listen("tcp", fmt.Sprintf("127.0.0.1:%d", proxyConfig.PortInLocal))
-	log.Println("Start Outgoing module server:", fmt.Sprintf("127.0.0.1:%d", proxyConfig.PortInLocal))
+	server, err := net.Listen("tcp", proxyConfig.OutGoingServerAddress)
+	log.Println("Start Outgoing module server:", proxyConfig.OutGoingServerAddress)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
@@ -38,7 +37,7 @@ func handleConnOutgoing(connIn net.Conn) {
 	processOutgoingRequest(connIn, connOut)
 }
 
-//Handle request to outgoing connection.
+// Handle request to outgoing connection.
 func processOutgoingRequest(connIn net.Conn, connOut net.Conn) {
 	connInBr := bufio.NewReader(connIn)
 	for {
@@ -117,7 +116,7 @@ func processOutgoingRequest(connIn net.Conn, connOut net.Conn) {
 	}
 }
 
-//Handle response from outgoing connection.
+// Handle response from outgoing connection.
 func processOutgoingResponse(connIn net.Conn, connOut net.Conn) error {
 	connInBr := bufio.NewReader(connIn)
 	// 1 Read headers

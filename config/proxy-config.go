@@ -9,7 +9,7 @@ import (
 type ProxyConfig struct {
 	IncomingAddress         string        // incoming connection from the internet
 	ForwardIncommingAddress string        // outgoing connection to local intermediary or origin server
-	PortInLocal             int           // incoming connection from local intermediary
+	OutGoingServerAddress   string        // incoming connection from local intermediary
 	OutgoingAddress         string        // outgoing connection to next intermediary
 	Whitelisting            bool          // apply whitelisting
 	ConnTimeout             time.Duration // connection read and write timeout

@@ -45,7 +45,7 @@ If deployed on an intermediary, the file may look as follows:
 {
     "incomingAddress": "<host-address>:80",
     "ForwardIncommingAddress": "<host-address>:81",
-    "portInLocal": 80,
+    "OutGoingServerAddress": "0.0.0.0:80",
     "outgoingAddress": "<host-address>:80",
     "whitelisting": true,
     "origin": false,
