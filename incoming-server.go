@@ -35,6 +35,7 @@ func handleConnIncoming(connIn net.Conn) {
 
 // Handle request from incoming connection.
 func processIncomingRequest(connIn net.Conn, connOut net.Conn) {
+	log.Println("--------------> process incomming request")
 	var currentSession *session.Session
 	connInBr := bufio.NewReader(connIn)
 	var ok bool
@@ -83,6 +84,7 @@ func processIncomingRequest(connIn net.Conn, connOut net.Conn) {
 		// 5 Forward request
 		if connOut == nil {
 			// Open connection if first request
+			log.Println("--------------> Forward request to:", proxyConfig.ForwardIncommingAddress)
 			connOut, err = net.Dial("tcp", proxyConfig.ForwardIncommingAddress)
 			if err != nil {
 				return
