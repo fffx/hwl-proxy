@@ -39,7 +39,7 @@ func handleConnOutgoing(connIn net.Conn) {
 
 // Handle request to outgoing connection.
 func processOutgoingRequest(connIn net.Conn, connOut net.Conn) {
-	log.Println("------------------> Handle request to outgoing connection")
+	log.Println("----------------> Handle request to outgoing connection:", proxyConfig.OutGoingServerAddress)
 	connInBr := bufio.NewReader(connIn)
 	for {
 		// 1 Read headers
@@ -98,7 +98,7 @@ func processOutgoingRequest(connIn net.Conn, connOut net.Conn) {
 			}
 		}
 		// 5 Forward request
-		log.Println("------------------> Forward request to:", proxyConfig.OutgoingAddress)
+		log.Println("---------------> Forward request to:", proxyConfig.OutgoingAddress)
 		if connOut == nil {
 			// Open connection if first request
 			connOut, err = net.Dial("tcp", proxyConfig.OutgoingAddress)

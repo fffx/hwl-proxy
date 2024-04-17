@@ -35,7 +35,7 @@ func handleConnIncoming(connIn net.Conn) {
 
 // Handle request from incoming connection.
 func processIncomingRequest(connIn net.Conn, connOut net.Conn) {
-	log.Println("--------------> process incomming request")
+	log.Println("--------------> process incomming request: proxyConfig.IncomingAddress")
 	var currentSession *session.Session
 	connInBr := bufio.NewReader(connIn)
 	var ok bool
