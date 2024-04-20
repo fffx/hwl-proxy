@@ -5,7 +5,7 @@
 *.so
 *.dylib
 build/*
-!build/.gitkeep 
+!build/.gitkeep
 
 # Test binary, built with `go test -c`
 *.test

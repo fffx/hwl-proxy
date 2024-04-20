@@ -3,6 +3,7 @@ package whitelisting
 import (
 	"bytes"
 	"encoding/json"
+	"log"
 	"os"
 	"regexp"
 
@@ -73,6 +74,9 @@ func (wl *Whitelist) Apply(data []byte) ([]byte, []byte, bool) {
 		}
 	}
 	whitelisted = append(whitelisted, []byte("\r\n")...)
+
+	log.Println("nonWhitelisted: ", nonWhitelisted)
+	log.Println("whitelisted: ", whitelisted)
 	return whitelisted, nonWhitelisted, true
 }
 

@@ -2,11 +2,10 @@ package whitelisting_test
 
 import (
 	"bytes"
+	"hwl-proxy/whitelisting"
 	"path/filepath"
 	"runtime"
 	"testing"
-
-	"whitelisting"
 )
 
 var tmpQuantity = 2
