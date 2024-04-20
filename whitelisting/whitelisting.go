@@ -75,8 +75,9 @@ func (wl *Whitelist) Apply(data []byte) ([]byte, []byte, bool) {
 	}
 	whitelisted = append(whitelisted, []byte("\r\n")...)
 
-	log.Println("nonWhitelisted: ", nonWhitelisted)
-	log.Println("whitelisted: ", whitelisted)
+	log.Println("data: ", string(data[:]))
+	log.Println("nonWhitelisted: ", string(nonWhitelisted[:]))
+	log.Println("whitelisted: ", string(whitelisted[:]))
 	return whitelisted, nonWhitelisted, true
 }
 
