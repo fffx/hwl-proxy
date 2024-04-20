@@ -6,8 +6,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/digital-security-lab/hwl-proxy/session"
-	"github.com/digital-security-lab/hwl-proxy/utils"
+	"hwl-proxy/session"
+	"hwl-proxy/utils"
 )
 
 func incomingServer() {

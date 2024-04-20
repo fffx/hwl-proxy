@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/digital-security-lab/hwl-proxy/utils"
+	"hwl-proxy/utils"
 )
 
 func TestReadUntilBytes(t *testing.T) {

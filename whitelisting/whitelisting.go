@@ -3,10 +3,10 @@ package whitelisting
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 	"regexp"
 
-	"github.com/digital-security-lab/hwl-proxy/utils"
+	"hwl-proxy/utils"
 )
 
 type WhitelistItem struct {
@@ -16,9 +16,9 @@ type WhitelistItem struct {
 
 type Whitelist []WhitelistItem
 
-//Load reads the whitelist from an according JSON file.
+// Load reads the whitelist from an according JSON file.
 func (wl *Whitelist) Load(file string) error {
-	data, err := ioutil.ReadFile(file)
+	data, err := os.ReadFile(file)
 	if err != nil {
 		return err
 	}
@@ -26,9 +26,9 @@ func (wl *Whitelist) Load(file string) error {
 	return err
 }
 
-//Apply modifies the request data, so only whitelisted headers are preserved.
-//It is assumed that the first line is the request line and is therefore ignored.
-//The first byte array returned is the request line and all whitelisted headers. The second array contains the headers that are not whitelisted.
+// Apply modifies the request data, so only whitelisted headers are preserved.
+// It is assumed that the first line is the request line and is therefore ignored.
+// The first byte array returned is the request line and all whitelisted headers. The second array contains the headers that are not whitelisted.
 func (wl *Whitelist) Apply(data []byte) ([]byte, []byte, bool) {
 	var err error
 	var re *regexp.Regexp
@@ -76,8 +76,8 @@ func (wl *Whitelist) Apply(data []byte) ([]byte, []byte, bool) {
 	return whitelisted, nonWhitelisted, true
 }
 
-//JoinHeaders adds headers to the original message,
-//if their field name is not already included.
+// JoinHeaders adds headers to the original message,
+// if their field name is not already included.
 func JoinHeaders(message []byte, headers []byte) []byte {
 	var data []byte
 	tmp := bytes.SplitN(message, []byte("\r\n\r\n"), 2)

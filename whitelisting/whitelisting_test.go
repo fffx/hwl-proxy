@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/digital-security-lab/hwl-proxy/whitelisting"
+	"whitelisting"
 )
 
 var tmpQuantity = 2

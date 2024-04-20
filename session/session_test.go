@@ -3,7 +3,7 @@ package session_test
 import (
 	"testing"
 
-	"github.com/digital-security-lab/hwl-proxy/session"
+	"hwl-proxy/session"
 )
 
 func TestSession(t *testing.T) {

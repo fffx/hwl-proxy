@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/digital-security-lab/hwl-proxy/whitelisting"
+	"hwl-proxy/whitelisting"
 )
 
 var reqLog *log.Logger

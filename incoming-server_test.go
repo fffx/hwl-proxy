@@ -2,22 +2,21 @@ package main
 
 import (
 	"bufio"
+	"hwl-proxy/whitelisting"
 	"log"
 	"net"
 	"os"
 	"regexp"
 	"testing"
 	"time"
-
-	"github.com/digital-security-lab/hwl-proxy/whitelisting"
 )
 
 func ProcessIncomingRequestTest(t *testing.T, request string, testRegex string) {
 	whitelist = []whitelisting.WhitelistItem{
-		whitelisting.WhitelistItem{Key: "host"},
-		whitelisting.WhitelistItem{Key: "connection", Val: `(?i)(close|keep-alive)`},
-		whitelisting.WhitelistItem{Key: "content-length", Val: `\d+`},
-		whitelisting.WhitelistItem{Key: "transfer-encoding", Val: `(?i)(chunked)`},
+		{Key: "host"},
+		{Key: "connection", Val: `(?i)(close|keep-alive)`},
+		{Key: "content-length", Val: `\d+`},
+		{Key: "transfer-encoding", Val: `(?i)(chunked)`},
 	}
 
 	reqLog = log.New(os.Stdout, log.Prefix(), 0)
@@ -40,7 +39,7 @@ func ProcessIncomingRequestTest(t *testing.T, request string, testRegex string) 
 
 	connIn.SetReadDeadline(time.Now().Add(time.Millisecond * 10))
 	br := bufio.NewReader(connIn)
-	length, err := br.Read(buf)
+	length, _ := br.Read(buf)
 	if re.Match(buf[:length]) == false {
 		t.Error("Forwarded request:", string(buf[:length]))
 

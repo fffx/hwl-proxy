@@ -3,14 +3,14 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"hwl-proxy/whitelisting"
 	"log"
 	"net"
 	"strconv"
 	"time"
 
-	"github.com/digital-security-lab/hwl-proxy/session"
-	"github.com/digital-security-lab/hwl-proxy/utils"
-	"github.com/digital-security-lab/hwl-proxy/whitelisting"
+	"hwl-proxy/session"
+	"hwl-proxy/utils"
 )
 
 func outgoingServer() {

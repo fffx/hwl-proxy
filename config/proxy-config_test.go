@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/digital-security-lab/hwl-proxy/config"
+	"hwl-proxy/config"
 )
 
 func TestLoadWhitelist(t *testing.T) {

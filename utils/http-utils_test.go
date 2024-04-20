@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/digital-security-lab/hwl-proxy/utils"
+	"hwl-proxy/utils"
 )
 
 func TestCreateResponse(t *testing.T) {

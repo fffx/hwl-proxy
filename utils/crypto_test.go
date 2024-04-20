@@ -3,7 +3,7 @@ package utils_test
 import (
 	"testing"
 
-	"github.com/digital-security-lab/hwl-proxy/utils"
+	"hwl-proxy/utils"
 )
 
 func TestGenerateRandomBytes(t *testing.T) {
